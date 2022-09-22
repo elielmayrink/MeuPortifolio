@@ -46,7 +46,7 @@ npx prisma db push
 
 ## Atribuições
 
-Os conhcimentos necessários para o desenvolvimento desse projet, foram adquiridos atravez:
+Os conhcimentos necessários para o desenvolvimento desse projeto, foram adquiridos atravez:
 Leitura de doc das tecs "Tailwindcss e remix"
 Canal do youtube "Fabio Vedovelli"
 Layout inspirado em um desafio da plataforma "Rocketseat"
