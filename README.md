@@ -7,7 +7,7 @@ tendo uma listagem de repositórios do github com chamadas http da api do mesmo.
 Também anexado ao portifólio, sera desenvolvido alguns projetos paralelos com a intenção de praticar o desenvolvimento e conhecimento nessa stack,
 esse projetos estaram listados no card a esqueda chamado "outher projects".
 
-obs => "os prjetos paralelos serão acrecentados a medida em que forem desenvolvidos
+obs => "os prjetos paralelos serão acrecentados a medida em que forem desenvolvidos"
 
 ## Development
 
