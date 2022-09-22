@@ -1,0 +1,35 @@
+import { PlusIcon } from "@heroicons/react/24/solid";
+import { Todo } from "@prisma/client";
+import { Link, Outlet } from "@remix-run/react";
+import TodoComponent from "./TodoComponent";
+
+export interface TodoContainerProps {
+  todos: Todo[];
+}
+
+export default function TodoContainer(prosp: TodoContainerProps) {
+  return (
+    <div className="w-full relative max-w-[952px] px-8 py-8 bg-[#302F3D] rounded-xl flex flex-col items-center">
+      <Link
+        title="Click para uma nova tarefa"
+        className="absolute top-6 right-6"
+        to="newtodo"
+      >
+        <PlusIcon width={25} />
+      </Link>
+      <div className="">
+        <h1 className="text-2xl font-semibold">Tarefas diárias</h1>
+      </div>
+      <div>
+        <Outlet />
+      </div>
+      <div className="w-[800px] flex flex-col items-start mt-6">
+        <ul className="w-full">
+          {prosp.todos.map((todo) => (
+            <TodoComponent todo={todo} />
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}

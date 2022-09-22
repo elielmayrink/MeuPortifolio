@@ -1,0 +1,53 @@
+{
+  "private": true,
+  "sideEffects": false,
+  "scripts": {
+    "build": "run-s \"build:*\"",
+    "build:css": "npm run generate:css -- --minify",
+    "build:remix": "remix build",
+    "dev": "run-p \"dev:*\"",
+    "dev:css": "npm run generate:css -- --watch",
+    "dev:remix": "remix dev",
+    "generate:css": "npx tailwindcss -i ./styles/tailwind.css -o ./app/tailwind.css",
+    "start": "remix-serve build",
+    "db:seed": "node ./prisma/seed.js"
+  },
+  "dependencies": {
+    "@headlessui/react": "^1.7.0",
+    "@heroicons/react": "^2.0.10",
+    "@prisma/client": "^4.3.1",
+    "@remix-run/express": "^1.7.0",
+    "@remix-run/node": "^1.7.0",
+    "@remix-run/react": "^1.7.0",
+    "@remix-run/serve": "^1.7.0",
+    "@tailwindcss/forms": "^0.5.3",
+    "@tailwindcss/line-clamp": "^0.4.2",
+    "compression": "^1.7.4",
+    "cross-env": "^7.0.3",
+    "express": "^4.18.1",
+    "lodash": "^4.17.21",
+    "morgan": "^1.10.0",
+    "prisma": "^4.3.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tiny-invariant": "^1.2.0"
+  },
+  "devDependencies": {
+    "@remix-run/dev": "^1.7.0",
+    "@remix-run/eslint-config": "^1.7.0",
+    "@types/lodash": "^4.14.185",
+    "@types/react": "^18.0.19",
+    "@types/react-dom": "^18.0.6",
+    "autoprefixer": "^10.4.9",
+    "concurrently": "^7.4.0",
+    "eslint": "^8.23.1",
+    "nodemon": "^2.0.19",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.16",
+    "tailwindcss": "^3.1.8",
+    "typescript": "^4.8.3"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}
