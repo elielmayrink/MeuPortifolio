@@ -25,7 +25,7 @@ iniciar o servidor
 npm run dev
 ```
 
-obs "será necessário criar um arquivo na pasta app por nome auth.js com uma variavel de altorisação de uso da api do github"
+obs "será necessário criar um arquivo na pasta app por nome auth.js com uma variavel de altorização de uso da api do github"
 
 ```js
 export const auth = {
