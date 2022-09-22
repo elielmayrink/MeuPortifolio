@@ -31,7 +31,7 @@ obs "será necessário criar um arquivo na pasta app por nome auth.js com uma va
 export const auth = {
   headers: {
     accept: "application/json.github.v3+json",
-    Authorization: "token Token gerado nas configs do github ",
+    Authorization: "token 'Token gerado nas configs do github'",
   },
 };
 ```
