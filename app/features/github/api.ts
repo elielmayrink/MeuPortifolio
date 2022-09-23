@@ -10,10 +10,13 @@ export async function getGithubUser(username?: string) {
   return pick(await res.json(), ["login", "avatar_url", "html_url", "bio"]);
 }
 
-export async function getUserGithubRepos(username?: string) {
+export async function getUserGithubRepos(
+  username?: string,
+  repos: string = ""
+) {
   invariant(username, "Please provide a username as a string");
   const res = await fetch(
-    `http://api.github.com/users/${username}/repos`,
+    `http://api.github.com/users/${username}/repos${repos}`,
     auth
   );
 
