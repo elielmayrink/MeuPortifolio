@@ -7,9 +7,12 @@ export interface TodoProps {
 }
 export default function TodoComponent(props: TodoProps) {
   return (
-    <li key={props.todo.id}>
+    <li
+      className="flex bg-[#22212C] w-full py-3 px-4 rounded-xl mb-2 justify-between"
+      key={props.todo.id}
+    >
       <Form
-        className="flex bg-[#22212C] w-full py-3 px-4 min-w-[200px] rounded-xl mb-2 justify-between"
+        className="flex w-full justify-between"
         method="post"
         action={`${props.todo.id}/delete`}
       >
@@ -35,7 +38,7 @@ export default function TodoComponent(props: TodoProps) {
             </span>
           </Link>
         </div>
-        <div className="flex min-w-[100px] items-center justify-end gap-x-3">
+        <div className="flex w-[100px] items-center justify-end gap-x-3">
           <Link to={`${props.todo.id}/edit`}>
             <PencilIcon width={20} />
           </Link>

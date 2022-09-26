@@ -1,18 +1,20 @@
-import { useLoaderData, Link } from "@remix-run/react";
+import { useLoaderData, Link, Outlet, useLocation } from "@remix-run/react";
 import { LoaderFunction } from "@remix-run/node";
 import { API, Types } from "~/features/github";
-import folderIcon from "../assets/images/folder.png";
-import gitBranch from "../assets/images/git-branch.png";
-import { StarIcon } from "@heroicons/react/24/outline";
+import { HomeIcon } from "@heroicons/react/24/solid";
+import ReposContainer from "~/features/github/Components/ReposContainer";
+import Repository from "~/features/github/Components/Repository";
 
 export const loader: LoaderFunction = async () => {
   const username = "elielmayrink";
   const user = await API.getGithubUser(username);
-  const repos = await API.getUserGithubRepos(username);
+  const limitedrepos = "?per_page=9";
+  const repos = await API.getUserGithubRepos(username, limitedrepos);
   return { user, repos };
 };
 
 export default function Dashboard() {
+  let location = useLocation();
   const personalData = [
     {
       id: 0,
@@ -193,7 +195,7 @@ export default function Dashboard() {
     {
       id: 7,
       data: "elielmayrink2@gmail.com",
-      url: "elielmayrink2@gmail.com",
+      url: "#",
       icon: () => (
         <svg
           width="24"
@@ -233,8 +235,8 @@ export default function Dashboard() {
   const { user, repos } = useLoaderData<Types.Repositories.LoaderData>();
   return (
     <>
-      <div className="w-full flex h-screen bg-[#22212C] px-10 py-10 rounded-md gap-16 mb-10">
-        <div>
+      <div className="w-full flex flex-col items-center md:flex-row md:items-start  h-screen bg-[#22212C] px-10 py-10 rounded-md gap-16 mb-10">
+        <div className="flex flex-wrap justify-center gap-6 md:block">
           <div className="w-[348px] bg-[#302F3D] py-8 flex flex-col items-center rounded-[20px] mb-7">
             <img
               width={128}
@@ -385,64 +387,30 @@ export default function Dashboard() {
               My Projects
             </h1>
             <div>
-              <a
-                href="#"
-                className="text-sm text-[#837E9F] font-normal hover:opacity-50 transition ease-in delay-150"
-              >
-                See all projects
-              </a>
+              {location.pathname === "/home" ? (
+                <Link
+                  to={"repos"}
+                  className="text-sm text-[#837E9F] font-normal hover:opacity-50 transition ease-in delay-150"
+                >
+                  See all projects
+                </Link>
+              ) : (
+                <Link className="text-[#837E9F]" to={"/home"}>
+                  <HomeIcon width={30} />
+                </Link>
+              )}
             </div>
           </div>
-          <div className="w-full grid grid-cols-3 gap-x-[60px] gap-y-10">
-            {repos.map((repo) => {
-              return (
-                <div
-                  key={repo.id}
-                  className="px-[30px] py-[30px] bg-[#302F3D] rounded-[20px] w-[430px] h-[186px] flex flex-col justify-between"
-                >
-                  <div>
-                    <div className="flex gap-x-4 mb-5">
-                      <img
-                        width={20}
-                        src={folderIcon}
-                        className="object-fill"
-                        alt=""
-                      />
-                      <h6 className="font-bold text-base text-[#837E9F]">
-                        {repo.name}
-                      </h6>
-                    </div>
-                    <div>
-                      <p className="text-sm text-[#837E9F] line-clamp-2">
-                        {repo.description
-                          ? repo.description
-                          : "Repositótio sem descrição por isso o texto default"}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <div className="flex gap-x-5 items-center">
-                      <div className="flex gap-2 items-center">
-                        <StarIcon color="#837E9F" width={20} />
-                        <span className="text-[#837E9F]">
-                          {repo.stargazers_count}
-                        </span>
-                      </div>
-                      <div className="flex gap-2 items-center">
-                        <img className="w-5 h-5" src={gitBranch} alt="" />
-                        <span className="text-[#837E9F]">{repo.forks}</span>
-                      </div>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="w-2 h-2 rounded-full bg-[#E7DE79] mr-1"></div>
-                      <span className="text-[#837E9F]">
-                        {repo.language ? repo.language : "Undefined language"}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+          <div>
+            {location.pathname === "/home" ? (
+              <ReposContainer>
+                {repos.map((repo) => {
+                  return <Repository key={repo.id} repo={repo} />;
+                })}
+              </ReposContainer>
+            ) : (
+              <Outlet />
+            )}
           </div>
         </div>
       </div>
