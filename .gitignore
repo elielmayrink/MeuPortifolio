@@ -6,4 +6,4 @@ node_modules
 .env
 /app/tailwind.css
 /prisma/dev.db
-/auth.js
+/app/auth.js
