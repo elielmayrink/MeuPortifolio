@@ -17,7 +17,7 @@ export interface TodoLayoutComoponentProps {
 export default function TodoLayoutComponent(props: TodoLayoutComoponentProps) {
   return (
     <>
-      <div className="w-full relative flex flex-col items-center py-10 bg-[#22212C] text-[#837E9F] h-full rounded-md">
+      <div className="w-full relative flex flex-col items-center px-10 py-10 bg-[#22212C] text-[#837E9F] h-full rounded-md">
         <Link
           className="absolute top-[-10px] left-1/2 translate-x-1/2 text-[#837E9F]"
           to="/"

@@ -23,10 +23,10 @@ export default function TodoContainer(prosp: TodoContainerProps) {
       <div>
         <Outlet />
       </div>
-      <div className="w-[800px] flex flex-col items-start mt-6">
-        <ul className="w-full">
+      <div className="w-full flex flex-col items-start mt-6 relative">
+        <ul className="w-full flex flex-col relative overflow-hidden">
           {prosp.todos.map((todo) => (
-            <TodoComponent todo={todo} />
+            <TodoComponent key={todo.id} todo={todo} />
           ))}
         </ul>
       </div>

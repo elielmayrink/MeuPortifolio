@@ -1,9 +1,7 @@
 import { useLoaderData, Link, Outlet, useLocation } from "@remix-run/react";
 import { LoaderFunction } from "@remix-run/node";
 import { API, Types } from "~/features/github";
-import folderIcon from "../assets/images/folder.png";
-import { HomeIcon, StarIcon } from "@heroicons/react/24/solid";
-import gitBranch from "../assets/images/git-branch.png";
+import { HomeIcon } from "@heroicons/react/24/solid";
 import ReposContainer from "~/features/github/Components/ReposContainer";
 import Repository from "~/features/github/Components/Repository";
 
