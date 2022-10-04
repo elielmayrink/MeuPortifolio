@@ -7,7 +7,7 @@ tendo uma listagem de repositórios do github com chamadas http da api do mesmo.
 Também anexado ao portifólio, sera desenvolvido alguns projetos paralelos com a intenção de praticar o desenvolvimento e conhecimento nessa stack,
 esse projetos estaram listados no card a esqueda chamado "outher projects".
 
-obs => "os prjetos paralelos serão acrecentados a medida em que forem desenvolvidos
+obs => "os prjetos paralelos serão acrecentados a medida em que forem desenvolvidos"
 
 ## Development
 
@@ -25,7 +25,7 @@ iniciar o servidor
 npm run dev
 ```
 
-obs "será necessário criar um arquivo na pasta app por nome auth.js com uma variavel de altorisação de uso da api do github"
+obs "será necessário criar um arquivo na pasta app por nome auth.js com uma variavel de altorização de uso da api do github"
 
 ```js
 export const auth = {
@@ -46,7 +46,7 @@ npx prisma db push
 
 ## Atribuições
 
-Os conhcimentos necessários para o desenvolvimento desse projet, foram adquiridos atravez:
+Os conhcimentos necessários para o desenvolvimento desse projeto, foram adquiridos atravez:
 Leitura de doc das tecs "Tailwindcss e remix"
 Canal do youtube "Fabio Vedovelli"
 Layout inspirado em um desafio da plataforma "Rocketseat"
