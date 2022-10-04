@@ -1,7 +1,7 @@
 import invariant from "tiny-invariant";
 import pick from "lodash/pick";
 import { Types } from "./";
-import { auth } from "~/auth";
+import { auth } from "~/util";
 
 export async function getGithubUser(username?: string) {
   invariant(username, "Please provide a username as a string");

@@ -13,6 +13,9 @@ export const loader: LoaderFunction = async ({ params }) => {
 
 export interface TodoLayoutComoponentProps {
   todos: Todo[];
+  completedTasks: Todo[];
+  showAllTodos: boolean;
+  changeShowAllTodos: () => void;
 }
 export default function TodoLayoutComponent(props: TodoLayoutComoponentProps) {
   return (
@@ -25,7 +28,12 @@ export default function TodoLayoutComponent(props: TodoLayoutComoponentProps) {
           <HomeIcon width={30} />
         </Link>
         {/* @ts-ignore */}
-        <TodoContainer todos={props.todos} />
+        <TodoContainer
+          todos={props.todos}
+          showAllTodos={props.showAllTodos}
+          changeShowAllTodos={props.changeShowAllTodos}
+          completedTasks={props.completedTasks}
+        />
       </div>
     </>
   );

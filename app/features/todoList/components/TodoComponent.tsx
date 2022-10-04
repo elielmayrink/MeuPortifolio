@@ -4,11 +4,16 @@ import { Form, Link } from "@remix-run/react";
 
 export interface TodoProps {
   todo: Todo;
+  showAllTodos: boolean;
 }
 export default function TodoComponent(props: TodoProps) {
   return (
     <li
-      className="flex bg-[#22212C] w-full py-3 px-4 rounded-xl mb-2 justify-between"
+      className={
+        props.todo.checked && !props.showAllTodos
+          ? "hidden"
+          : "flex bg-[#22212C] w-full py-3 px-4 rounded-xl mb-2 justify-between"
+      }
       key={props.todo.id}
     >
       <Form

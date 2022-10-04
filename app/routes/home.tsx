@@ -304,6 +304,13 @@ export default function Dashboard() {
                     </span>
                   </Link>
                 </li>
+                <li className="flex flex-col mb-4 hover:opacity-50 transition ease-in delay-150 max-w-[120px]">
+                  <Link to="/climatempo">
+                    <span className="text-base text-[#837E9F] leading-5 font-bold">
+                      Clima Tempo
+                    </span>
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>

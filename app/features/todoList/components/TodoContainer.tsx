@@ -5,9 +5,12 @@ import TodoComponent from "./TodoComponent";
 
 export interface TodoContainerProps {
   todos: Todo[];
+  completedTasks: Todo[];
+  showAllTodos: boolean;
+  changeShowAllTodos: () => void;
 }
 
-export default function TodoContainer(prosp: TodoContainerProps) {
+export default function TodoContainer(props: TodoContainerProps) {
   return (
     <div className="w-full relative max-w-[952px] px-8 py-8 bg-[#302F3D] rounded-xl flex flex-col items-center">
       <Link
@@ -25,11 +28,21 @@ export default function TodoContainer(prosp: TodoContainerProps) {
       </div>
       <div className="w-full flex flex-col items-start mt-6 relative">
         <ul className="w-full flex flex-col relative overflow-hidden">
-          {prosp.todos.map((todo) => (
-            <TodoComponent key={todo.id} todo={todo} />
+          {props.todos.map((todo) => (
+            <TodoComponent
+              key={todo.id}
+              todo={todo}
+              showAllTodos={props.showAllTodos}
+            />
           ))}
         </ul>
       </div>
+      <button
+        onClick={props.changeShowAllTodos}
+        className="absolute bottom-2 right-[33px]"
+      >
+        Ver todas as tarefas
+      </button>
     </div>
   );
 }

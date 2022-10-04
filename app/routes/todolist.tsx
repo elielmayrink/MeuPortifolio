@@ -1,6 +1,7 @@
 import { Todo } from "@prisma/client";
 import { LoaderFunction } from "@remix-run/node";
 import { useCatch, useLoaderData } from "@remix-run/react";
+import { useState } from "react";
 import TodoLayoutComponent from "~/features/todoList/components/TodoLayoutComoponent";
 import { getTodos } from "~/features/todoList/todoList.api";
 export const loader: LoaderFunction = async ({ params }) => {
@@ -14,8 +15,27 @@ export interface LoaderData {
 }
 export default function () {
   const { todos } = useLoaderData<LoaderData>();
+  const completedTasks = todos.filter((todo) => todo.checked);
+  const [showAllTodos, setShowAllTodos] = useState(false);
+  console.log(completedTasks);
+  function verifyCompletdTasks() {
+    if (completedTasks.length === 0) {
+      setShowAllTodos(false);
+    }
+  }
+
+  console.log("show", showAllTodos);
   // @ts-ignore
-  return <TodoLayoutComponent todos={todos} />;
+  return (
+    <TodoLayoutComponent
+      showAllTodos={showAllTodos}
+      // @ts-ignore
+      todos={todos}
+      // @ts-ignore
+      completedTasks={completedTasks}
+      changeShowAllTodos={() => setShowAllTodos(!showAllTodos)}
+    />
+  );
 }
 
 export function ErrorBoundary({ error }: { error: Error }) {
