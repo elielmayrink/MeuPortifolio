@@ -1,6 +1,6 @@
-export async function getWeaderData(city: string = "joinville") {
-  const id = "84899add57d6eb8da6cf1646ffb35f97";
+import { id } from "~/auth";
 
+export async function getWeaderData(city: string = "joinville") {
   const res = await fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${id}&units=metric`
   );
