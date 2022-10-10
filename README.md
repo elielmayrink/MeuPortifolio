@@ -47,6 +47,7 @@ npx prisma db push
 ### Para funcionamento da feature WeatherApp => Clima Tempo "projeto paralelo"
   Será necessário criar uma chave de identificação em "https://openweathermap.org/"
   de onde esta sendo obtido os dados.
+  Atribuir esse ID a uma variavel no arquivo api.ts na pasta features/climatempo
 
 ## Atribuições
 
