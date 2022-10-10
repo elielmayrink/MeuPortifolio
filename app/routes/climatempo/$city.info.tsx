@@ -1,14 +1,8 @@
-import { ActionFunction, LoaderFunction, redirect } from "@remix-run/node";
-import { useActionData, useCatch, useLoaderData } from "@remix-run/react";
-import {
-  CloudSun,
-  Signpost,
-  ThermometerCold,
-  ThermometerHot,
-  ThermometerSimple,
-  Wind,
-} from "phosphor-react";
+import { LoaderFunction } from "@remix-run/node";
+import { useCatch, useLoaderData } from "@remix-run/react";
 import { getWeaderData } from "~/features/climaTempo/api";
+import LocationInfo from "~/features/climaTempo/components/LocationInfo";
+import WeatherInfo from "~/features/climaTempo/components/WeatherInfo";
 import { WeatherData } from "~/features/climaTempo/types";
 import { windDirectionFunction } from "~/util";
 
@@ -24,57 +18,17 @@ export default function Info() {
   const windDirection = windDirectionFunction(wind.deg);
   return (
     <>
-      <div className="w-full flex justify-between mb-8">
-        <div>
-          <h2 className="text-xl">Country: {sys.country}</h2>
-        </div>
-        <div>
-          <h2 className="text-xl">City: {name}</h2>
-        </div>
-      </div>
+      <LocationInfo sys={sys} name={name} />
       <div className="w-full px-8">
-        <ul>
-          <li className="flex mb-4 items-center">
-            <div className="w-12 h-12 bg-[#22212c] rounded-md flex items-center justify-center mr-8 animate-[wiggle_1.5s_ease-in-out]">
-              {main.temp <= 20 ? (
-                <ThermometerCold size={38} weight="duotone" />
-              ) : (
-                <ThermometerHot size={38} weight="duotone" />
-              )}
-            </div>
-            Temp: {main.temp}º
-          </li>
-          <li className="flex mb-4 w-full space-x-10 items-center">
-            <div className="w-12 h-12 bg-[#22212c] rounded-md flex items-center justify-center mr-8 animate-[wiggle_1.5s_ease-in-out]">
-              <ThermometerSimple size={38} weight="duotone" />
-            </div>
-            Max: {main.temp_max}º
-          </li>
-          <li className="flex mb-4 w-full space-x-10 items-center">
-            <div className="w-12 h-12 bg-[#22212c] rounded-md flex items-center justify-center mr-8 animate-[wiggle_1.5s_ease-in-out]">
-              <ThermometerSimple size={38} weight="duotone" />
-            </div>
-            min: {main.temp_min}º
-          </li>
-          <li className="flex mb-4 w-full space-x-10 items-center">
-            <div className="w-12 h-12 bg-[#22212c] rounded-md flex items-center justify-center mr-8 animate-[wiggle_1.5s_ease-in-out]">
-              <CloudSun size={38} weight="duotone" />
-            </div>
-            Clouds: {clouds.all}%
-          </li>
-          <li className="flex mb-4 w-full space-x-10 items-center">
-            <div className="w-12 h-12 bg-[#22212c] rounded-md flex items-center justify-center mr-8 animate-[wiggle_1.5s_ease-in-out]">
-              <Wind size={38} weight="duotone" />
-            </div>
-            Wind Speed: {wind.speed}
-          </li>
-          <li className="flex mb-4 w-full space-x-10 items-center">
-            <div className="w-12 h-12 bg-[#22212c] rounded-md flex items-center justify-center mr-8 animate-[wiggle_1.5s_ease-in-out]">
-              <Signpost size={38} weight="duotone" />
-            </div>
-            Wind Direction: {windDirection}
-          </li>
-        </ul>
+        <WeatherInfo
+          clouds={clouds}
+          main={main}
+          wind={wind}
+          windDirection={windDirection}
+          coord={coord}
+          sys={sys}
+          name={""}
+        />
       </div>
     </>
   );

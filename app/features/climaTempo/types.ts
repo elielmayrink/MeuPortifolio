@@ -39,6 +39,7 @@ export interface Sys {
 }
 
 export interface WeatherData {
+  windDirection: string;
   coord: Coord;
   main: Main;
   wind: Wind;
