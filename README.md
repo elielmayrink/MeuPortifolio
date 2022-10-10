@@ -44,6 +44,10 @@ criara o db.dev e o .env
 npx prisma db push
 ```
 
+### Para funcionamento da feature WeatherApp => Clima Tempo "projeto paralelo"
+  Será necessário criar uma chave de identificação em "https://openweathermap.org/"
+  de onde esta sendo obtido os dados.
+
 ## Atribuições
 
 Os conhcimentos necessários para o desenvolvimento desse projeto, foram adquiridos atravez:
